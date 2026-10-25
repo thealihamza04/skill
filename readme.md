@@ -7,6 +7,9 @@ A collection of reusable AI skills built to improve writing, design, and develop
 - **[Genz Urdish Writer](./genz-urdish-writer/SKILL.md)**  
   Write natural Urdish content with platform-specific tone and formatting.
 
+- **[Design System](./design-system/SKILL.md)**  
+  Official brand colors, typography, voice, and graphics guidelines for consistent visual identity.
+
 - **[Design Decisions](./design-decisions/SKILL.md)**  
   *Add a description of this skill.*
 
