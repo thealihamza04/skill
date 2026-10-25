@@ -13,6 +13,12 @@ A collection of reusable AI skills built to improve writing, design, and develop
 - **[Bancho Component Picker](./bancho-component-picker/SKILL.md)**  
   *Add a description of this skill.*
 
+- **[Interface Engineer](./interface-engineer/SKILL.md)**  
+  Design and implement distinctive, accessible, responsive frontend interfaces.
+
+- **[Interface Animations](./interface-animations/SKILL.md)**  
+  Design and review purposeful, accessible, performant interface motion.
+
 ## Installation
 
 Install a skill using the [Skills CLI](https://skills.sh/):

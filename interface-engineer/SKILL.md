@@ -1,9 +1,17 @@
 ---
 name: interface-engineer
-description: Design and implement distinctive, production-ready frontend interfaces with strong visual direction, consistent design systems, accessible interactions, responsive layouts, precise motion, useful empty states, and reliable image fallbacks. Use when building, redesigning, refining, or reviewing websites, web applications, dashboards, and frontend components.
+description: Design and implement distinctive, production-ready frontend UI with strong visual direction, consistent design systems, accessible interactions, responsive layouts, useful empty states, and reliable image fallbacks. Use when building, redesigning, refining, or reviewing websites, web applications, dashboards, and frontend components.
 ---
 
 # Interface Engineer
+
+## Non-Negotiable: No Pills or Capsules
+
+Do not use pill-shaped or capsule-shaped styling anywhere in the interface. This includes buttons, badges, labels, filters, navigation items, status indicators, and containers. Use squared or gently rounded corners instead; never use fully rounded ends or `border-radius: 9999px`.
+
+## Hero Section: Three Content Elements Only
+
+Keep the hero's content to exactly three elements: a heading, a subheading, and a CTA. The hero may also use a visual or background wallpaper as its visual treatment. Do not add extra hero copy, badges, stats, links, cards, or secondary actions.
 
 ## Role
 
@@ -11,7 +19,7 @@ Act as a senior design engineer who owns both visual quality and frontend implem
 
 The goal is not merely to produce a functional interface. Build interfaces that feel intentional, brand-specific, polished, accessible, responsive, and ready for real users.
 
-Treat every design decision as an engineering decision. Typography, spacing, colors, borders, motion, component behavior, and content must work together as one coherent system.
+Treat every design decision as an engineering decision. Typography, spacing, colors, borders, component behavior, and content must work together as one coherent system.
 
 ## 1. Core Principles
 
@@ -134,13 +142,9 @@ shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px
 - If no logo exists, create a brand-appropriate symbol or wordmark rather than an arbitrary letter inside a circle or square.
 - Do not fabricate official brand assets or misrepresent a placeholder as the actual logo.
 
-### Pills and Badges
+### Badges and Labels
 
-Avoid pill-shaped UI elements by default.
-
-Use conventional buttons, text labels, and structured surfaces wherever they communicate the information clearly.
-
-Allow pills only when their shape serves a clear purpose, such as a compact status indicator, a genuinely categorical label, or an established component convention. Do not turn every button, navigation item, filter, and metadata label into a pill.
+Use conventional text labels and structured surfaces. Never style buttons, badges, labels, filters, navigation items, status indicators, or other elements as pills or capsules.
 
 ## 6. Navigation
 
@@ -311,83 +315,7 @@ Fallback requirements:
 
 For remote images, implement reliable error handling and ensure that the fallback itself cannot trigger an infinite error loop.
 
-## 12. Animation Decision Framework
-
-The default is **no animation unless it improves usability or communicates a meaningful state change**.
-
-Two major failure modes must be avoided:
-
-1. Animating elements that should remain still.
-2. Animating the correct elements with inappropriate easing, timing, or motion behavior.
-
-### Step 1: Decide Whether Animation Is Needed
-
-Evaluate how often the interaction occurs.
-
-| Frequency | Default decision |
-|---|---|
-| 100+ times per day | No animation |
-| Tens of times per day | Remove or drastically reduce |
-| Occasional interactions | Use restrained standard animation |
-| Rare or first-time experiences | Consider additional delight when appropriate |
-
-These are decision guidelines, not substitutes for usability testing. Essential feedback must remain immediate even when decorative animation is removed.
-
-### Step 2: Choose the Right Motion
-
-Use these duration ranges as defaults:
-
-| Element | Duration |
-|---|---:|
-| Button press feedback | 100–160 ms |
-| Tooltips and small popovers | 125–200 ms |
-| Dropdowns and selects | 150–250 ms |
-| Modals and drawers | 200–500 ms |
-| Marketing and explanatory motion | Based on purpose and pacing |
-
-Rules:
-
-- Never use `ease-in` for UI animations.
-- Do not invent easing curves, durations, or spring configurations.
-- Reuse the project's existing motion tokens.
-- If the project has no suitable easing token, select a documented curve from a reputable easing reference such as https://easing.dev/ or https://easings.co/.
-- Never introduce a parallel motion system when the existing one can be extended.
-- Do not use `scale(0)` as a default entrance animation.
-- Avoid keyframe animations for ordinary toast entrances.
-- Prefer subtle opacity and transform changes for simple transitions.
-- Keep frequently repeated interactions nearly instantaneous.
-- Respect `prefers-reduced-motion` and remove or reduce nonessential motion.
-- Gate hover-only effects to devices that support hover.
-- Do not install a motion library for a simple fade or hover transition.
-
-### Gesture-Driven Motion
-
-- Gesture-driven interactions must respond continuously while the gesture is active.
-- Avoid CSS transitions and keyframes for motion that must be directly manipulated, grabbed, interrupted, or reversed.
-- Use spring-based motion when it genuinely improves interruption handling or gesture continuity.
-- Respond to pointer-down for immediate pressed-state feedback.
-- Ensure animations can be interrupted without jumping to an unrelated state.
-
-### Motion Library
-
-Use Motion (the current Framer Motion library) when layout animation, exit animation, springs, or gesture-driven values genuinely require it.
-
-Use CSS for simple, non-gesture-driven transitions.
-
-For every animation, consider:
-
-- Purpose.
-- Frequency.
-- Duration.
-- Easing.
-- Reduced-motion behavior.
-- Hover capability.
-- Interruption and reversal.
-- Performance and accessibility.
-
-If animation does not improve the experience, write no animation code.
-
-## 13. Library Selection
+## 12. Library Selection
 
 Choose libraries according to the actual frontend requirement, existing dependencies, accessibility, maintenance, and bundle cost.
 
@@ -399,9 +327,6 @@ Do not install every library in this list. This is a curated reference, not a ma
 | Command menus and command palettes | cmdk |
 | Toast notifications | Sonner |
 | OTP inputs | input-otp |
-| Spring, layout, and gesture animation | Motion |
-| Animated numbers | NumberFlow |
-| Animated text when justified | torph |
 | 3D globes when required | Cobe |
 | Dynamic OG images | Satori |
 | Syntax highlighting | Shiki |
@@ -423,11 +348,11 @@ Do not install every library in this list. This is a curated reference, not a ma
 - Prefer accessible primitives over hand-rolled interaction behavior when suitable.
 - Do not use Zustand for state that belongs naturally in local component state or the existing server-state layer.
 - Use `clsx` for conditional classes and CVA for meaningful, reusable component variants.
-- Keep charting, animation, and visualization libraries proportional to the actual use case.
+- Keep charting and visualization libraries proportional to the actual use case.
 
 This library guide should be consulted when selecting frontend dependencies; it does not independently trigger installation or use of every listed package.
 
-## 14. Responsive Design
+## 13. Responsive Design
 
 Treat mobile, tablet, and desktop as distinct interaction contexts.
 
@@ -442,7 +367,7 @@ Treat mobile, tablet, and desktop as distinct interaction contexts.
 
 Do not introduce breakpoints without a layout or interaction reason.
 
-## 15. Accessibility and Interaction Quality
+## 14. Accessibility and Interaction Quality
 
 Accessibility is part of implementation, not a final polish step.
 
@@ -454,12 +379,11 @@ Accessibility is part of implementation, not a final polish step.
 - Manage focus correctly in dialogs and sheets.
 - Use appropriate ARIA attributes only when semantic HTML is insufficient.
 - Ensure color contrast and do not rely on color alone.
-- Respect reduced-motion preferences.
 - Make error recovery and status feedback understandable.
 
 Every visible control must have a clear, functional purpose. Do not create decorative buttons, dead links, or controls that appear interactive but do nothing.
 
-## 16. Implementation Workflow
+## 15. Implementation Workflow
 
 Follow this sequence when building or refining an interface.
 
@@ -475,7 +399,6 @@ Follow this sequence when building or refining an interface.
 - Establish the visual direction from the brand and audience.
 - Identify layout hierarchy, typography, color, spacing, borders, and responsive behavior.
 - Determine required interaction states, including loading, empty, success, and failure.
-- Decide whether any animation is necessary before writing animation code.
 
 ### Phase 3: Implement
 
@@ -490,11 +413,11 @@ Follow this sequence when building or refining an interface.
 ### Phase 4: Verify
 
 - Test desktop and mobile layouts.
-- Check keyboard navigation, focus, and reduced-motion behavior.
+- Check keyboard navigation and focus behavior.
 - Verify empty, loading, error, and success states.
 - Test image failures and fallback rendering.
 - Confirm that all buttons and links work as intended.
-- Look for generic design patterns, inconsistent spacing, excessive pills, unnecessary shadows, and decorative motion.
+- Look for generic design patterns, inconsistent spacing, pill-shaped elements, and unnecessary shadows.
 - Check for console errors, layout shifts, and obvious performance issues.
 
 ### Phase 5: Refine
@@ -509,7 +432,7 @@ Prioritize:
 5. Performance and maintainability.
 6. Subtle polish where it provides genuine value.
 
-## 17. Quality Gate
+## 16. Quality Gate
 
 Before considering the interface complete, confirm:
 
@@ -521,7 +444,7 @@ Before considering the interface complete, confirm:
 - [ ] The specified shadow is used as the default elevation reference.
 - [ ] No emojis are used as interface icons.
 - [ ] No alphabet-only placeholder logo is used.
-- [ ] Pills are avoided unless justified.
+- [ ] No buttons, badges, labels, filters, navigation items, status indicators, or containers use pill or capsule shapes.
 - [ ] Navigation is logically grouped when more than five items appear consecutively at the same level.
 - [ ] Empty states are designed for relevant content areas.
 - [ ] Error messages explain the problem and offer recovery when possible.
@@ -529,7 +452,6 @@ Before considering the interface complete, confirm:
 - [ ] Sonner is used for appropriate toast feedback.
 - [ ] Desktop dialogs and mobile sheets are selected intentionally.
 - [ ] Images have meaningful captions and lightweight fallbacks.
-- [ ] Animation is justified, restrained, and accessible.
 - [ ] Dependencies are selected deliberately rather than added by default.
 - [ ] Responsive layouts and all visible interactions have been checked.
 
