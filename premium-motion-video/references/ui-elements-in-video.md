@@ -1,0 +1,51 @@
+# UI Elements Rendered Inside a Video
+
+When a scene's content is a UI element built in code — a card, a terminal/CLI window, a dashboard, a button, an app screen mockup — that element is an interface-engineering problem, not a motion-design one. The motion-design rules elsewhere in this skill (easing, timing, transitions) still apply to *how it animates*, but *how it looks at rest* is governed by this repo's `interface-engineer` and `design-system` skills, exactly as if it were being built for a real app. Building it from scratch with ad hoc styling instead of those rules is the single most common reason a code-rendered UI element inside a video looks cheap even when the surrounding motion is good.
+
+Before building any such element: read `interface-engineer`'s SKILL.md for the specific element type (cards, typography, spacing/shadows, icons, components — its section numbers below), and `design-system` for the actual color/type tokens. Don't paraphrase those rules from memory — read them, because they carry exact values that are easy to get slightly wrong.
+
+## Cards and panels
+
+- **Border radius:** use `interface-engineer`'s concentric-radii formula (outer radius = inner radius + padding) for any nested container — a card with an inner element should not have an arbitrarily-picked outer radius.
+- **Shadow:** use the exact standard shadow value `interface-engineer` defines (`shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]` or its equivalent in whatever styling system the composition uses) rather than an invented drop-shadow. Use it only where separation is actually needed — not on every surface.
+- **No pill shapes.** `interface-engineer`'s non-negotiable rule against pill/capsule styling on buttons, badges, labels, and containers applies here exactly as it would in a real app.
+- **One card/panel as the scene's dominant element**, per this skill's own Section 2 one-idea-per-scene rule — a scene showing a grid of five cards at equal weight usually means the actual subject is one of them, with the rest as unfocused context.
+
+## Terminal / CLI windows
+
+- **Don't hand-roll a terminal mockup.** Use `interface-engineer`'s curated source for this — Brainless (`bunx shadcn@latest registry add @brainless=https://brainless.swerdlow.dev/r/{name}.json`), which already covers sessions, messages, tool calls, diffs, permissions, and slash menus — and adapt its visual hierarchy rather than building window chrome and prompt styling from scratch.
+- **Syntax highlighting, not flat colored text.** Use a real highlighter (`interface-engineer` names Shiki) if any code is shown — hand-picked colors per token read as fake the moment someone who writes code looks closely.
+- **Typing rhythm, if animated, should look like real typing**, not a uniform per-character reveal — vary per-character timing slightly, and let the cursor behave like a real terminal cursor (blink when idle, not while text is appearing).
+- **Keep window chrome minimal** — traffic-light dots or a title bar if they're genuinely part of the reference being matched, nothing skeuomorphic beyond that.
+
+## Grid items (feature cards, capability cards)
+
+A grid of cards is where generic-SaaS-template chrome shows up most — name and ban each of these specifically rather than trusting the general minimalism rules to catch them:
+
+- **No numbered index badges ("01", "02", "03"...)** unless the number carries real, meaningful sequence the user actually asked to show in order (real step 1 → step 2 → step 3, not four unordered feature cards wearing numbers as decoration).
+- **No decorative corner dot or status dot** on a card with no function — a dot that doesn't indicate a real state (online/offline, active/inactive) is chrome, not information.
+- **No eyebrow/kicker label** above the grid's section headline (see the main skill's Section 1 "Generic SaaS-template chrome").
+- **Every card's visual slot is either a real asset or doesn't exist.** If a card is meant to have an icon or image, render a real one (this repo's image-generation skills, or a real icon per `interface-engineer` Section 5) before delivering — a blank or gray placeholder box is a failure, not a stand-in. A card with no real visual to show is better built with no visual slot at all than with an empty one.
+- **Cards in a grid still obey the one-dominant-idea budget per card**: a title and one short description line is usually enough — don't let each card individually accumulate its own eyebrow, badge, and dot on top of the grid-level ones.
+
+## Buttons, inputs, badges, and other controls
+
+- Defer entirely to `interface-engineer` Sections 5 and 8 (icons, logos, badges/labels, button copy) — action-describing labels, no pill shapes, Lucide/React Icons (never emoji) for any icon shown.
+- A control shown in a video is usually static (not actually interactive), but it should still look like it *could* be clicked — correct affordance, correct contrast, no fake hover state baked in unless the scene specifically simulates a pointer move.
+
+## Typography and color inside the UI element
+
+- Use `design-system`'s actual tokens (Inter, weights 400/500/600, the documented color palette) for any text or color inside the rendered UI — not a visually-similar substitute. If the element represents a real product that has its own brand tokens, use those instead and say so; don't silently default to this repo's palette for someone else's product.
+- This is what makes a code-rendered mockup indistinguishable from a real screenshot, which `product-demo.md` already requires ("mockups must be faithful to the real product") — faithfulness includes the actual design tokens, not just the right layout.
+
+## Checklist addition
+
+Before delivering a scene that renders a UI element in code, confirm:
+
+- [ ] Concentric radii and the standard shadow value were used, not invented ones.
+- [ ] No pill/chip/badge shapes anywhere in the element.
+- [ ] No eyebrow/kicker label, numbered index badge, decorative accent dot, or separator glyph that wasn't explicitly asked for.
+- [ ] No empty/placeholder visual slot — every icon or image area shows a real rendered asset, or doesn't exist.
+- [ ] A terminal/CLI element used Brainless (or an equivalent real component source) rather than being hand-built from scratch.
+- [ ] Any code shown uses real syntax highlighting, not flat hand-picked colors.
+- [ ] Typography and color inside the element use real design tokens (this repo's `design-system`, or the represented product's own brand if different).
