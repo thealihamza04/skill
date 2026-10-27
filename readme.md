@@ -19,6 +19,9 @@ A collection of reusable AI skills built to improve writing, design, and develop
 - **[Interface Animations](./interface-animations/SKILL.md)**  
   Design and review purposeful, accessible, performant interface motion.
 
+- **[Premium Motion Video](./premium-motion-video/SKILL.md)**  
+  Generate premium, minimal motion-design videos in Remotion through a storyboard-first workflow with deliberate motion and sound design.
+
 ## Installation
 
 Install a skill using the [Skills CLI](https://skills.sh/):
