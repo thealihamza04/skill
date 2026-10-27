@@ -25,4 +25,6 @@
 
 **Transitions:** Vary technique across scenes more than other categories can — a multi-minute explainer using the same cut every time starts to feel mechanical. Use match cuts between visually related beats and hard cuts between unrelated ones; save a cross-dissolve for an actual tonal shift (moving from problem to solution, or into the slow/documentary variant's more atmospheric beats). See `../transitions.md`.
 
+**Sound:** The narration carries this category — SFX stays sparse and supportive, ducked properly under the voiceover (~9 dB per `../motion-rules.md`), never competing with it. The slow/documentary variant can sustain more ambient/atmospheric sound across a held shot than the punchy variant, which should stay closer to silent between its narration beats.
+
 **Expected output bar:** A viewer who knew nothing about the topic can explain the core idea back after one watch, and the opening 5 seconds alone would make them want to keep watching.

@@ -22,4 +22,6 @@
 
 **Transitions:** If several stats play in sequence, use the same transition between every pair — usually a match cut on the shared accent color or a consistent push — so the set reads as one piece rather than separate clips. See `../transitions.md`.
 
+**Sound:** A single, restrained hit when the number lands on its hold (point 6 above), not on every incremental tick of a counter — the hold is the moment that deserves emphasis, not the counting itself. See `../motion-rules.md` for gain/peak-placement defaults.
+
 **Expected output bar:** Someone could pause the video at any point past the first third of the animation and already read the approximate value; the final number is traceable to a real source.

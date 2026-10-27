@@ -4,6 +4,15 @@ When a scene's content is a UI element built in code — a card, a terminal/CLI 
 
 Before building any such element: read `interface-engineer`'s SKILL.md for the specific element type (cards, typography, spacing/shadows, icons, components — its section numbers below), and `design-system` for the actual color/type tokens. Don't paraphrase those rules from memory — read them, because they carry exact values that are easy to get slightly wrong.
 
+## Internal composition and spacing
+
+Neither `interface-engineer` nor `design-system` defines a numeric spacing scale — they assume a project already has one to reuse. A video scene usually doesn't, so use this skill's own default scale rather than picking arbitrary pixel values per element: **4 / 8 / 12 / 16 / 24 / 32 / 48 / 64px**, each a multiple of 4. Pick values from this scale consistently across every UI element in the project the way a real design system would; if the project being represented already has its own spacing tokens (because it's a real product being faithfully recreated), use those instead.
+
+- **Icon + text pairing:** size the icon to roughly 1.1–1.2× the adjacent text's line height, with a consistent gap (pick one value from the scale above and reuse it everywhere icons sit next to text) — an icon that's a different size relative to its label in every instance reads as sloppy even if each instance looks fine alone.
+- **Label/value pairs** (a stat with its caption, a setting with its description): keep a consistent vertical order and gap across every instance in the scene — all labels above their values, or all below, never mixed.
+- **Rows and lists:** consistent row height and consistent internal padding across every row — a list where rows have slightly different heights because content length wasn't accounted for looks unfinished.
+- **Avatars/profile elements:** a real initial, a real (or faithfully mocked) image, or a simple geometric placeholder consistent with the project's graphics palette — never a generic stock silhouette icon, which reads as the least-finished option available.
+
 ## Cards and panels
 
 - **Border radius:** use `interface-engineer`'s concentric-radii formula (outer radius = inner radius + padding) for any nested container — a card with an inner element should not have an arbitrarily-picked outer radius.
@@ -32,6 +41,7 @@ A grid of cards is where generic-SaaS-template chrome shows up most — name and
 
 - Defer entirely to `interface-engineer` Sections 5 and 8 (icons, logos, badges/labels, button copy) — action-describing labels, no pill shapes, Lucide/React Icons (never emoji) for any icon shown.
 - A control shown in a video is usually static (not actually interactive), but it should still look like it *could* be clicked — correct affordance, correct contrast, no fake hover state baked in unless the scene specifically simulates a pointer move.
+- If the scene does simulate a click, hover, toggle, dropdown, or any other interaction, that motion is covered in `../micro-interactions.md`, not here — this section covers how the control looks at rest.
 
 ## Typography and color inside the UI element
 

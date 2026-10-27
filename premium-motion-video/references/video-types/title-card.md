@@ -21,4 +21,6 @@
 
 **Transitions:** Between cards (not within one), prefer a hard cut or a quick push/slide over a cross-dissolve — type-led pieces read as more confident with a clean break between ideas than with an overlap that briefly shows two sets of text at once. See `../transitions.md`.
 
+**Sound:** Usually none — the words carry the piece, and a sound on every word/line reveal starts to feel like a notification chime. If one is used at all, reserve it for the single most important word or the final line, not every reveal. See `../motion-rules.md` for gain/peak-placement defaults.
+
 **Expected output bar:** Every word's timing feels deliberate on a second watch; no shape or color is competing with the text for attention.

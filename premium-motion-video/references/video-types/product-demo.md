@@ -16,6 +16,8 @@
 5. **A VO or on-screen copy carries the "why," the visuals carry the "what."** Don't make the narration describe what's already visually obvious on screen — use it to explain the benefit or context the screen alone can't show.
 6. **Close on the product's name/mark and (if relevant) a single clear next step**, not on the last feature shown — the ending is a brand/CTA beat, structurally similar to a brand sting (see `brand-sting.md`).
 
+**Sound:** A restrained, UI-style sound (a soft click or snap) is appropriate on the moment something is highlighted, not on every screen appearance — keep it as consistent across the piece as the motion treatment itself (point 2 above). If there's a voiceover, duck any SFX under it the same as music. See `../motion-rules.md` for gain/peak-placement/ducking defaults.
+
 **Pitfalls specific to this category:**
 - Generic stock-footage-style B-roll standing in for actual product content.
 - Showing every feature at equal weight instead of leading with what matters.

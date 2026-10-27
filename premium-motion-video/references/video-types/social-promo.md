@@ -21,4 +21,6 @@
 
 **Transitions:** Default to hard cuts or whip pans — the fast pacing this category wants rarely has room for a cross-dissolve's overlap. Reserve a match cut for the one moment (e.g. the product reveal) where it would land hardest. See `../transitions.md`.
 
+**Sound:** Reinforcement only, per point 3 above — nothing essential should depend on it. If used, place it on the hook beat and the closing/CTA beat, not on every fast cut; at this pacing, a hit on every cut turns into noise fast. See `../motion-rules.md` for gain/peak-placement defaults.
+
 **Expected output bar:** Muted, at phone width, in the first 2 seconds, a new viewer understands enough to decide whether to keep watching.
