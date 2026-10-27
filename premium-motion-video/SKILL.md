@@ -1,6 +1,6 @@
 ---
 name: premium-motion-video
-description: Generate premium, minimal motion-design videos in Remotion (code-driven React video) through a required storyboard-first workflow with deliberate per-scene motion and sound design. Use whenever the user asks to create, build, or render a video, motion graphic, animated explainer, product demo, launch video, promo, or anything described as a "Remotion video" or "motion design video" — even if they don't use those exact words. Critical for avoiding generic "AI slop" video output: enforces real animation-principle discipline, minimal visual language, and a validation pass before delivery. Not for a single static image (use the image-generation skills) and not for in-app UI animation (use interface-animations).
+description: Generate premium, minimal motion-design videos in Remotion (code-driven React video) through a required storyboard-first workflow with deliberate per-scene motion and sound design. Use whenever the user asks to create, build, or render a video, motion graphic, animated explainer, product demo, launch video, promo, or anything described as a "Remotion video" or "motion design video" — even if they don't use those exact words. Critical for avoiding generic "AI slop" video output, enforcing real animation-principle discipline, minimal visual language, and a validation pass before delivery. Not for a single static image (use the image-generation skills) and not for in-app UI animation (use interface-animations).
 ---
 
 # Premium Motion Video
