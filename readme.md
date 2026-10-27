@@ -4,20 +4,17 @@ A collection of reusable AI skills built to improve writing, design, and develop
 
 ## Available Skills
 
-- **[Genz Urdish Writer](./genz-urdish-writer/SKILL.md)**  
+- **[Urdish Copywriter](./urdish-copywriter/SKILL.md)**  
   Write natural Urdish content with platform-specific tone and formatting.
 
 - **[Design System](./design-system/SKILL.md)**  
   Official brand colors, typography, voice, and graphics guidelines for consistent visual identity.
 
-- **[Design Decisions](./design-decisions/SKILL.md)**  
-  *Add a description of this skill.*
-
 - **[Bancho Component Picker](./bancho-component-picker/SKILL.md)**  
-  *Add a description of this skill.*
+  Find and adapt expressive interactive UI components from Bancho.dev.
 
 - **[Interface Engineer](./interface-engineer/SKILL.md)**  
-  Design and implement distinctive, accessible, responsive frontend interfaces.
+  Design and implement distinctive, accessible, responsive frontend interfaces, including Ali Hamza's design direction and curated component/library sources.
 
 - **[Interface Animations](./interface-animations/SKILL.md)**  
   Design and review purposeful, accessible, performant interface motion.

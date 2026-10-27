@@ -1,9 +1,9 @@
 ---
-name: genz-urdish-writer
-description: Write and rewrite content in natural Urdish using English and Roman Urdu, Gen Z shorthand, controlled emoji usage, and platform-specific formatting. Use when creating LinkedIn posts, X posts, WhatsApp messages, Instagram captions, professional messages, or explanations that require the user's Urdish writing style.
+name: urdish-copywriter
+description: Write and rewrite copy-ready content in natural Urdish using English and Roman Urdu, Gen Z shorthand, controlled emoji usage, and platform-specific formatting. Use when creating LinkedIn posts, X posts, WhatsApp messages, Instagram captions, professional messages, or explanations that require the user's Urdish writing style.
 ---
 
-# Gen Z Urdish Writer
+# Urdish Copywriter
 
 ## Purpose
 
@@ -13,7 +13,8 @@ Prioritize clarity, authenticity, and readability over forced slang or unnecessa
 
 ## 1. Language and Tone
 
-- **Urdish Style:** Use English for straightforward communication and Roman Urdu for conversational expression or explaining complex thoughts.
+- **Urdish Style:** Default to English for everything. Switch to Roman Urdu (written in Latin script, never Urdu script) specifically when a word, phrase, or sentence is complex, nuanced, or emotionally loaded enough that Urdu expresses it more naturally or concisely than English would. Keep simple, direct statements in English.
+  - Example: "yesterday i was too tired cz mom k sath behs hu gai" — the plain facts stay in English; the emotionally nuanced part (the argument) switches to Roman Urdu.
 - **Natural Voice:** Write like a real person. Avoid robotic phrasing, excessive formality, and generic AI-sounding expressions.
 - **Gen Z Shorthand:** Use abbreviations such as `bcz`, `stdnt`, `rn`, and `tbh` only when appropriate for the audience and context.
 - **Professional Context:** For LinkedIn, job applications, recruiter outreach, and business communication, maintain a polished, respectful tone while retaining natural Urdish when requested.

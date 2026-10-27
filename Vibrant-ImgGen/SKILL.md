@@ -1,15 +1,25 @@
 ---
 name: vibrant-imggen
-description: Create detailed image-generation prompts with vibrant cinematic colors, layered depth, atmospheric lighting, dreamy landscapes, anime-inspired environments, macro bokeh, and ethereal night scenes. Use when generating or refining visual prompts that need expressive color, immersive composition, and cinematic atmosphere.
+description: Generate or edit vibrant, cinematic images with expressive color, layered depth, atmospheric lighting, dreamy landscapes, anime-inspired environments, macro bokeh, or ethereal night scenes. Use when the user asks for a vibrant, cinematic, painterly, dreamy, anime-style, photoreal nature, macro, or atmospheric/night image. Not for a minimal, clean, dark-first or branded image (use minimalist-brand-image-generator) and not for UI/code work.
 ---
 
 # Vibrant Image Generation
 
 ## Purpose
 
-Create visually compelling image-generation prompts using vibrant color contrast, cinematic composition, layered depth, atmospheric lighting, and carefully controlled visual detail.
+Create and generate vibrant, cinematic images using deliberate color contrast, layered depth, atmospheric lighting, and carefully controlled visual detail.
 
 The goal is to produce images that feel immersive, polished, emotionally evocative, and compositionally intentional rather than merely colorful.
+
+## When to Use This Skill
+
+Activate when the user asks for an image that is vibrant, cinematic, painterly, dreamy, anime-style, photoreal nature/landscape, macro, or atmospheric/night, and has not asked for their brand.
+
+Do not use when:
+- The user asks for their brand, or for something minimal, clean, dark-first, or premium-corporate. Use `minimalist-brand-image-generator` instead.
+- The task is a UI, website, or document layout.
+
+If a request mixes both ("vibrant sunset but keep it on-brand"), follow the explicit request and borrow structure (layout, restraint, focal point) from `minimalist-brand-image-generator` rather than ignoring it.
 
 ## Core Visual Styles
 
@@ -87,6 +97,17 @@ When creating an image prompt:
 6. **Add material details:** Include only textures and details that strengthen the image.
 7. **Set the mood:** Communicate the intended emotional response.
 8. **Refine constraints:** Specify aspect ratio, text placement, subject positioning, or exclusions when relevant.
+9. **Generate or edit:** Use the available image-generation tool to produce the image from the finished prompt. If no image tool is available, say so and give the ready-to-use prompt instead.
+10. **Review the result:** Open or view the output and check it against the Quality Checklist below, plus: correct aspect ratio, no unintended text or watermarks, and palette matches what was specified. Do not describe a check as passed if you did not run it.
+11. **Deliver:** Save the file with a descriptive name and send it to the user. Note anything the user should know (style combined, aspect ratio, any deviation from the request).
+
+### Text in vibrant scenes
+These styles are predominantly textless (landscapes, macro, night scenes). If the user needs text (a quote over an image, a title card):
+- Prefer adding it in a separate layout step after generating a textless image, since image models render text unreliably — add "no text, no letters" to the generation prompt, leave a clean area for it, then overlay the text yourself.
+- If the user gives exact copy, preserve spelling, punctuation, and wording exactly. Do not invent slogans or captions that were not requested.
+
+### Platform and size
+Use the user's requested size if given. Otherwise pick a size that fits the intended use (e.g. 1080×1350 for a feed post, 1920×1080 for a wide cinematic scene, 1080×1920 for a story/reel). Do not default to one ratio for every request — a landscape composition usually wants to breathe wider than a square crop allows.
 
 ## Output Standards
 

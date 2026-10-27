@@ -1,6 +1,6 @@
 ---
 name: interface-engineer
-description: Design and implement distinctive, production-ready frontend UI with strong visual direction, consistent design systems, accessible interactions, responsive layouts, useful empty states, and reliable image fallbacks. Use when building, redesigning, refining, or reviewing websites, web applications, dashboards, and frontend components.
+description: Design and implement distinctive, production-ready frontend UI with strong visual direction, consistent design systems, accessible interactions, responsive layouts, useful empty states, and reliable image fallbacks. Owns Ali Hamza's design direction (premium, classic, minimal, scanable) and the curated library/component sources for both foundational UI needs and expressive visual flourishes. Use when building, redesigning, refining, or reviewing websites, web applications, dashboards, and frontend components.
 ---
 
 # Interface Engineer
@@ -31,7 +31,19 @@ Treat every design decision as an engineering decision. Typography, spacing, col
 - Build a visual language that fits the specific product rather than forcing every project into the same aesthetic.
 - Use references for inspiration, not as templates to reproduce blindly.
 - Prioritize strong hierarchy, intentional composition, meaningful whitespace, and useful interactions over decorative complexity.
+- Add interactive elements only when they make the task clearer, faster, or more memorable.
 - Avoid unnecessary visual elements. Every element must support the content, functionality, brand, or hierarchy.
+- Give each screen or scene one dominant message, one dominant visual, or one of each — the same discipline the Hero section rule enforces, applied everywhere, not just the hero.
+- Prefer a premium, classic, minimal aesthetic by default: strong negative space, balanced symmetry, consistent spacing, and fewer, stronger elements over a collection of competing cards, effects, or controls.
+- Remove decorative labels, tiny captions, dense supporting copy, and visual noise unless they are necessary.
+- Treat typography, spacing, and composition as the primary design tools; motion should reinforce the hierarchy, not compensate for a weak layout.
+
+### Information Design
+
+- When content feels text-heavy, turn it into a scan-first visual story.
+- Show the important milestones, choices, or outcomes first; put secondary explanation behind interaction, expansion, or progressive disclosure.
+- Keep cards concise: a short title, a single takeaway, and a visual cue are usually enough.
+- Center the primary mobile experience. Move secondary controls such as settings and history into accessible sheets or dialogs.
 
 ### Understand Before Designing
 
@@ -49,6 +61,8 @@ Use the answers to define the layout, color system, typography, density, imagery
 Do not delay implementation with unnecessary discovery when the context is already available. Ask questions only when a missing detail materially affects the result.
 
 ## 2. Typography
+
+This skill shares tokens with the `design-system` skill. If the two ever disagree, `design-system` is the source of truth — update this file to match rather than drifting.
 
 Use **Inter exclusively** for interface typography.
 
@@ -352,6 +366,28 @@ Do not install every library in this list. This is a curated reference, not a ma
 
 This library guide should be consulted when selecting frontend dependencies; it does not independently trigger installation or use of every listed package.
 
+### Specialized and Expressive Component Sources
+
+For needs beyond the foundational table above, check these sources before building a custom component or visual from scratch. Select components that suit the available space and product purpose — avoid novelty for its own sake, and preserve the project's existing design system, responsiveness, and accessibility when integrating any of them.
+
+| Need | Source |
+|---|---|
+| Expressive/tactile interaction patterns (animated, data-display, carousel, upload, comparison, reaction, compact components) | Use the `bancho-component-picker` skill |
+| Complex file-upload flow | UploadCN — read its `/llms.txt` (and `/llms-full.txt` for API detail) before using it |
+| Animated robot-head visual | `robot-heads` npm package — review its current API and reduced-motion/accessible-label support (`github.com/fayazara/robot-heads`) |
+| Gauges and meters (speed, temperature, CPU/system usage, health/pulse, steps, weather, sleep, cockpit readings) | Gauge UI (`npx shadcn@latest add https://gauge-ui.dev/r/gauge.json`) |
+| Terminal/CLI-inspired product surface (sessions, messages, tool calls, diffs, permissions, slash menus, todo lists) | Brainless (`bunx shadcn@latest registry add @brainless=https://brainless.swerdlow.dev/r/{name}.json`) |
+| Cursor-reactive mascot/character | Page Mascot (`npm i page-mascot`; verify React Native compatibility separately before using in a native app) |
+| Animation-showcase project needing an alternative shadcn component set | UIArc (`npx shadcn@latest add https://uiarc.dev/r/arc-skill.json`) |
+| Structured project-management dashboard (inbox, tasks, projects, boards, lists, tables, calendar, timeline, file views) | GR8R Studio — adapt its dashboard patterns to the product's actual information architecture |
+
+### Video and Animated Backgrounds
+
+- For promotional/explanatory video: use Brag for creative direction and storytelling, and Remotion (with reusable React components) for precise animations, cinematic transitions, automated rendering, and multiple variations.
+- For an interactive, code-embedded 3D animated background, consider Vanta.js first (Birds, Fog, Waves, Clouds, Net, Trunk, Topology, Dots, Rings, Halo). Tune it to the project and include a lightweight fallback for mobile, reduced motion, and devices without reliable WebGL.
+- For a premium animated-background asset delivered as an image or video rather than live code, consider GradientLab by Backgrounds Supply; verify it supports the required export format before relying on a live embed.
+- Use one background effect at a time unless multiple layers are essential to the story — the background must support the content, not compete with it.
+
 ## 13. Responsive Design
 
 Treat mobile, tablet, and desktop as distinct interaction contexts.
@@ -412,6 +448,7 @@ Follow this sequence when building or refining an interface.
 
 ### Phase 4: Verify
 
+- Do not claim visual completion from code review, linting, or DOM inspection alone; use a real preview, screenshot, or render when visual quality matters.
 - Test desktop and mobile layouts.
 - Check keyboard navigation and focus behavior.
 - Verify empty, loading, error, and success states.
@@ -438,6 +475,7 @@ Before considering the interface complete, confirm:
 
 - [ ] The design reflects the actual brand, audience, industry, and context.
 - [ ] The result does not rely on a generic template or visual clichés.
+- [ ] Each screen has one dominant message, one dominant visual, or one of each — not a collection of competing elements.
 - [ ] Inter is the only typeface, using weights 400, 500, and 600.
 - [ ] Existing color and design tokens are reused.
 - [ ] Concentric border radii are applied appropriately.
