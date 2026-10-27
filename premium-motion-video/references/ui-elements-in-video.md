@@ -4,6 +4,8 @@ When a scene's content is a UI element built in code — a card, a terminal/CLI 
 
 Before building any such element: read `interface-engineer`'s SKILL.md for the specific element type (cards, typography, spacing/shadows, icons, components — its section numbers below), and `design-system` for the actual color/type tokens. Don't paraphrase those rules from memory — read them, because they carry exact values that are easy to get slightly wrong.
 
+**Use real shadcn/ui components as the baseline, not hand-rolled divs that visually imitate one.** `interface-engineer` already builds on shadcn registries for specialized sources (Brainless for terminals, Gauge UI for gauges) — the same applies to ordinary elements: install shadcn/ui's own components (`npx shadcn@latest add card`, `add button`, `add badge`, etc.) and use their actual structure (e.g. a card is `<Card><CardHeader><CardTitle>/<CardDescription></CardHeader><CardContent>...</CardContent></Card>`, not a plain bordered `<div>` with text inside it). A hand-rolled div that only copies a card's border and padding is missing everything a real component gives you for free — correct internal spacing, correct content slots, a structure that doesn't leave dead space when content is shorter than expected.
+
 ## Internal composition and spacing
 
 Neither `interface-engineer` nor `design-system` defines a numeric spacing scale — they assume a project already has one to reuse. A video scene usually doesn't, so use this skill's own default scale rather than picking arbitrary pixel values per element: **4 / 8 / 12 / 16 / 24 / 32 / 48 / 64px**, each a multiple of 4. Pick values from this scale consistently across every UI element in the project the way a real design system would; if the project being represented already has its own spacing tokens (because it's a real product being faithfully recreated), use those instead.
@@ -19,6 +21,7 @@ Neither `interface-engineer` nor `design-system` defines a numeric spacing scale
 - **Shadow:** use the exact standard shadow value `interface-engineer` defines (`shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]` or its equivalent in whatever styling system the composition uses) rather than an invented drop-shadow. Use it only where separation is actually needed — not on every surface.
 - **No pill shapes.** `interface-engineer`'s non-negotiable rule against pill/capsule styling on buttons, badges, labels, and containers applies here exactly as it would in a real app.
 - **One card/panel as the scene's dominant element**, per this skill's own Section 2 one-idea-per-scene rule — a scene showing a grid of five cards at equal weight usually means the actual subject is one of them, with the rest as unfocused context.
+- **No forced dead space.** A card's height should come from its actual content (padding from the spacing scale above, plus whatever's really in it) — never a fixed min-height that leaves a large unexplained blank gap because there was no icon or visual to fill it. If the design calls for a visual in the card, add a real one (an icon per `interface-engineer` Section 5, or a real generated asset); if there isn't one, let the card size to its title and description and don't manufacture space for content that doesn't exist.
 
 ## Terminal / CLI windows
 
@@ -36,6 +39,7 @@ A grid of cards is where generic-SaaS-template chrome shows up most — name and
 - **No eyebrow/kicker label** above the grid's section headline (see the main skill's Section 1 "Generic SaaS-template chrome").
 - **Every card's visual slot is either a real asset or doesn't exist.** If a card is meant to have an icon or image, render a real one (this repo's image-generation skills, or a real icon per `interface-engineer` Section 5) before delivering — a blank or gray placeholder box is a failure, not a stand-in. A card with no real visual to show is better built with no visual slot at all than with an empty one.
 - **Cards in a grid still obey the one-dominant-idea budget per card**: a title and one short description line is usually enough — don't let each card individually accumulate its own eyebrow, badge, and dot on top of the grid-level ones.
+- **Build the grid from real shadcn/ui `Card` components**, not bordered divs — and give each card either a real icon or no icon slot at all, never an empty reserved area. A grid of cards that are each just a title, a description, and a large blank gap is the single most common version of this category's generic-template failure.
 
 ## Buttons, inputs, badges, and other controls
 
@@ -52,8 +56,10 @@ A grid of cards is where generic-SaaS-template chrome shows up most — name and
 
 Before delivering a scene that renders a UI element in code, confirm:
 
+- [ ] The element was built from a real shadcn/ui (or other named, real) component — not a hand-rolled div that only copies the look of one.
 - [ ] Concentric radii and the standard shadow value were used, not invented ones.
 - [ ] No pill/chip/badge shapes anywhere in the element.
+- [ ] No card or panel has forced dead space — height comes from real content, not a fixed min-height with nothing to fill it.
 - [ ] No eyebrow/kicker label, numbered index badge, decorative accent dot, or separator glyph that wasn't explicitly asked for.
 - [ ] No empty/placeholder visual slot — every icon or image area shows a real rendered asset, or doesn't exist.
 - [ ] A terminal/CLI element used Brainless (or an equivalent real component source) rather than being hand-built from scratch.
