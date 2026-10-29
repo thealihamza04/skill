@@ -2,6 +2,19 @@
 
 A collection of reusable AI skills built to improve writing, design, and development workflows.
 
+## Polished Skills
+
+These are the most refined, tested skills in this collection:
+
+- **[Minimalist Image Generator](./Minimalist-Image-Generator/SKILL.md)**  
+  Generate or edit premium, minimalist, light-first branded images (social posts, thumbnails, covers, promo graphics) using your brand palette and Inter typography.
+
+- **[Vibrant Image Generator](./Vibrant-ImgGen/SKILL.md)**  
+  Generate or edit vibrant, cinematic images with expressive color, layered depth, atmospheric lighting and dreamy, painterly scenes.
+
+- **[Remotion Kinetic Typography Word-Wall Video](./remotion-kinetic-typography-word-wall-video/SKILL.md)**  
+  Plan, build and validate text-only kinetic-typography promo videos in Remotion: a typed line, a word-wall montage, a payoff statement and a logo reveal, synced to music and SFX. It scales from a 6-second sting to multi-act videos in any aspect ratio.
+
 ## Available Skills
 
 - **[Urdish Copywriter](./urdish-copywriter/SKILL.md)**  
