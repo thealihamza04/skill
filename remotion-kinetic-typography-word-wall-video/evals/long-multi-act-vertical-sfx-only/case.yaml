@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: long-multi-act-vertical-sfx-only
+expected_outcome: |
+  A three-act LumenReel composition at 1080×1920 (one act each for what it tracks, how it feels and
+  who it's for, then a LUMEN/ANALYTICS-style wordmark), SFX only with no music, planned in a PLAN.md,
+  timed by the skill's planner with readable, distinct wall durations in every act and variety between
+  acts, roughly 25–40 seconds, type-checks, and validated with stills plus the audio check. No MP4.
