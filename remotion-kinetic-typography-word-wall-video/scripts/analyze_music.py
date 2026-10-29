@@ -86,6 +86,7 @@ def main():
         bpm = 60 / beat
         print(f"tempo ≈ {bpm:.1f} BPM (kick interval {beat:.3f}s) → {a.fps * beat:.2f} frames/beat at {a.fps:g}fps")
     else:
+        beat = None
         print("tempo: no steady kick found; use the energy map below and the ear")
 
     secs = sorted(st)
@@ -115,16 +116,25 @@ def main():
                 for i in range(len(hb))]  # mean rise of the kick and cymbal bands
         i = int(np.argmax(jump))
         t = max(0, s - 3) + i * 0.05
-        k_after = [k for k in kicks if t - 0.1 <= k <= t + 0.4]
-        t_drop = k_after[0] if k_after else t
-        line = f"  {t_drop:7.3f}s  (kick+cymbal bands rise {jump[i]:+.0f} dB)"
+        # the sync point is where a steady kick run starts (kicks on ≥ 2 of the next 3 beats), which
+        # can sit a bar or so after the energy rise (a riser or fill before the kicks enter)
+        t_drop, note = t, "no steady kicks within 4s; sync by ear"
+        for k in kicks:
+            if k < t - 0.1 or k > t + 4:
+                continue
+            on_grid = sum(any(abs(q - (k + m * beat)) < 0.06 for q in kicks) for m in (1, 2, 3)) if beat else 0
+            if on_grid >= 2:
+                t_drop = k
+                note = "kicks enter" + (f" {k - t:.2f}s after the energy rise at {t:.3f}s" if k - t > 0.4 else "")
+                break
+        line = f"  {t_drop:7.3f}s  ({note}; kick+cymbal bands rise {jump[i]:+.0f} dB)"
         if a.drop_frame is not None:
             trim = (t_drop - a.drop_frame / a.fps) * a.fps
             line += f"  → trimBefore ≈ {trim:.1f} source frames to land on frame {a.drop_frame:g}"
         print(line)
     if not cands:
         print("  none found — pick a strong downbeat from the kick list instead")
-    print("\nfirst kicks after each candidate are the sync points; bars are 4 beats from the drop.")
+    print("\neach time is the first kick of a steady run (the sync point); bars are 4 beats from it.")
 
 
 if __name__ == "__main__":

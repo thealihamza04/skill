@@ -1,0 +1,65 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "palette": {
+    "paper": "#F8F8F8",
+    "ink": "#111114",
+    "wall": "#5B50E8",
+    "wallInk": "#1C1652",
+    "highlight": "#FFFFFF",
+    "accent": "#5B50E8",
+    "endBg": "#040507",
+    "endInk": "#FFFFFF",
+    "bar": "#5B50E8"
+  },
+  "sound": {
+    "typeWord": {
+      "src": "assets/sfx/pop.wav",
+      "peakOffset": 0,
+      "volume": 0.52
+    },
+    "wallIn": {
+      "src": "assets/sfx/air.mp3",
+      "peakOffset": 9,
+      "volume": 3.98
+    },
+    "wallSwap": {
+      "src": "assets/sfx/digital-snap.wav",
+      "peakOffset": 0,
+      "volume": 0.69
+    },
+    "statement": {
+      "src": "assets/sfx/crystal-chime.wav",
+      "peakOffset": 0,
+      "volume": 0.87
+    },
+    "reveal": {
+      "src": "assets/sfx/sub-swoosh.wav",
+      "peakOffset": 3,
+      "volume": 0.76
+    },
+    "revealImpact": {
+      "src": "assets/sfx/deep-drop.wav",
+      "peakOffset": 0,
+      "volume": 0.43
+    }
+  },
+  "extraHitSound": {
+    "src": "assets/sfx/pop.wav",
+    "peakOffset": 0,
+    "volume": 0.77
+  },
+  "music": {
+    "src": "assets/music/track.mp3",
+    "trimBefore": 1711.0,
+    "gain": 0.4,
+    "duckOn": [
+      "typeWord",
+      "statement",
+      "reveal"
+    ]
+  },
+  "custom": {
+    "Logo": "assets/end-card.html"
+  }
+}

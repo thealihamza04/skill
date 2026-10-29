@@ -107,6 +107,7 @@ def main():
         hop, win = int(sr * 0.002), int(sr * 0.008)
         env = np.array([np.abs(low[i : i + win]).sum() for i in range(0, len(low) - win, hop)])
         d = np.diff(env, prepend=env[0])
+        kick_ref = np.percentile(d, 99.5)  # a typical strong kick attack in this render
         frame_ms = 1000 / fps
         print(f"\nbeat sync (structural cut vs nearest kick attack; fails beyond ±{frame_ms:.0f} ms = 1 frame):")
         for s in tm["structural"]:
@@ -117,6 +118,10 @@ def main():
             if hi <= lo:
                 continue
             i = lo + int(np.argmax(d[lo:hi]))
+            strength = d[i] / max(kick_ref, 1e-9)
+            if strength < 0.3:  # a break, a fade or the track's end: nothing to sync to
+                print(f"  {s['label']:24s} frame {s['frame']:4d}  no kick here ({strength:.2f}× a normal kick), not scored")
+                continue
             off = (i * 0.002 - s["frame"] / fps) * 1000
             bad = abs(off) > frame_ms
             ok &= not bad

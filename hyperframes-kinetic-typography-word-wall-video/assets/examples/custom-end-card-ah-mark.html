@@ -1,0 +1,57 @@
+<!--
+  Example custom end card: a pixel-grid "AH" monogram rebuilt as vector shapes.
+  Referenced from video.json → "custom": {"AhLogo": "assets/end-card.html"} and the
+  spec's end card {"kind": "custom", "ref": "AhLogo", "frames": 36, "extraHits": [15]}.
+
+  Fragment contract (build_composition.py):
+  - The markup is placed inside the end-card <section class="clip">; {{ID}} becomes
+    the scene id, so every element id stays unique.
+  - The <script data-hf-scene> body runs once at load as a function of
+    (tl, T0, FPS, W, H, ID): add tl.set(...) calls at T0 + frame / FPS. No clocks,
+    no randomness, no media calls — the main timeline owns time.
+
+  The mark (units of one grid cell; measured from the source logo): A is 5×7 cells,
+  H starts 0.53 cells after it; a lavender 45° fold sits on A's crossbar corner.
+  Reveal: a vertical indigo bar narrows into the A–H gap while A and H slide out
+  (p = 1 − 0.765^f); on frame 15 the bar is gone and the fold snaps on.
+-->
+<svg id="{{ID}}-mark" width="100%" height="100%" style="position:absolute;inset:0;" shape-rendering="crispEdges">
+  <defs>
+    <clipPath id="{{ID}}-cl"><rect id="{{ID}}-clr" x="-50" y="-50" width="55" height="100" /></clipPath>
+    <clipPath id="{{ID}}-cr"><rect id="{{ID}}-crr" x="5" y="-50" width="100" height="100" /></clipPath>
+  </defs>
+  <g clip-path="url(#{{ID}}-cl)">
+    <g id="{{ID}}-a" fill="#E5E5E6">
+      <rect x="1" y="0" width="3" height="1" /><rect x="0" y="1" width="1" height="6" />
+      <rect x="4" y="1" width="1" height="6" /><rect x="1" y="4" width="3" height="1" />
+    </g>
+  </g>
+  <g clip-path="url(#{{ID}}-cr)">
+    <g id="{{ID}}-h" fill="#E5E5E6">
+      <rect x="5.53" y="0" width="0.98" height="7" /><rect x="9.55" y="0" width="0.98" height="7" />
+      <rect x="6.51" y="3" width="3.04" height="1" />
+    </g>
+  </g>
+  <rect id="{{ID}}-bar" x="4.4" y="0" width="3.13" height="7" fill="#5B50E8" />
+  <polygon id="{{ID}}-fold" points="3.21,4.75 4.75,4.75 4.75,3.22" fill="#EEECFC" opacity="0"
+    shape-rendering="geometricPrecision" />
+</svg>
+<script data-hf-scene>
+  // 40px per cell on a 1920×1080 frame, scaled with the frame; mark centered.
+  const UNIT = 40 * Math.min(W / 1920, H / 1080) * (H > W ? 1.35 : 1);
+  const MARK_W = 10.53, MARK_H = 7, GAP_L = 5, GAP_R = 5.53, FOLD_ON = 15;
+  document.getElementById(ID + "-mark").setAttribute(
+    "viewBox", `${MARK_W / 2 - W / 2 / UNIT} ${MARK_H / 2 - H / 2 / UNIT} ${W / UNIT} ${H / UNIT}`);
+  for (let f = 0; f <= FOLD_ON; f++) {
+    const k = Math.pow(0.765, f);
+    const barOn = f < FOLD_ON;
+    const barL = GAP_L - 0.6 * k, barR = GAP_R + 2 * k;
+    const t = T0 + f / FPS;
+    tl.set("#" + ID + "-clr", { attr: { width: 50 + (barOn ? barL : GAP_R) } }, t);
+    tl.set("#" + ID + "-crr", { attr: { x: barOn ? barR : GAP_L } }, t);
+    tl.set("#" + ID + "-a", { attr: { transform: `translate(${(2 * k).toFixed(4)},0)` } }, t);
+    tl.set("#" + ID + "-h", { attr: { transform: `translate(${(-2 * k).toFixed(4)},0)` } }, t);
+    tl.set("#" + ID + "-bar", { attr: { x: barL, width: barR - barL }, opacity: barOn ? 1 : 0 }, t);
+    tl.set("#" + ID + "-fold", { opacity: barOn ? 0 : 1 }, t);
+  }
+</script>

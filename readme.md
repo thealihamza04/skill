@@ -15,6 +15,9 @@ These are the most refined, tested skills in this collection:
 - **[Remotion Kinetic Typography Word-Wall Video](./remotion-kinetic-typography-word-wall-video/SKILL.md)**  
   Plan, build and validate text-only kinetic-typography promo videos in Remotion: a typed line, a word-wall montage, a payoff statement and a logo reveal, synced to music and SFX. It scales from a 6-second sting to multi-act videos in any aspect ratio.
 
+- **[HyperFrames Kinetic Typography Word-Wall Video](./hyperframes-kinetic-typography-word-wall-video/SKILL.md)**  
+  The same word-wall video format built with HyperFrames as plain HTML and GSAP, with no React. A bundled generator writes the whole project, and it passes `hyperframes check` with zero findings plus the audio and beat-sync checks.
+
 ## Available Skills
 
 - **[Urdish Copywriter](./urdish-copywriter/SKILL.md)**  

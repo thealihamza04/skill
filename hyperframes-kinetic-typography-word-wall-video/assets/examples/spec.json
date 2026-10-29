@@ -1,0 +1,66 @@
+{
+  "fps": 24,
+  "music": {
+    "bpm": 100,
+    "dropFrame": 20,
+    "grid": "beat"
+  },
+  "minReadable": 10,
+  "acts": [
+    {
+      "typed": {
+        "words": [
+          "I",
+          "can",
+          "build",
+          "you"
+        ],
+        "wordGap": 3
+      },
+      "wall": {
+        "words": [
+          "web apps",
+          "mobile apps",
+          "dashboards",
+          "APIs",
+          "AI agents",
+          "MCP servers",
+          "accessible UIs",
+          "ML models",
+          "landing pages"
+        ],
+        "vocab": [
+          "web apps",
+          "mobile apps",
+          "dashboards",
+          "APIs",
+          "AI agents",
+          "MCP servers",
+          "accessible UIs",
+          "ML models",
+          "landing pages",
+          "SaaS products",
+          "admin panels",
+          "e-commerce",
+          "automations"
+        ],
+        "shape": "fast-slow-accel-hold",
+        "distinct": true
+      },
+      "statement": {
+        "lead": "…anything ",
+        "accent": "that works",
+        "tail": ".",
+        "minFrames": 50
+      }
+    }
+  ],
+  "end": {
+    "kind": "custom",
+    "ref": "Logo",
+    "frames": 36,
+    "extraHits": [
+      15
+    ]
+  }
+}
