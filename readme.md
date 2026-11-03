@@ -21,6 +21,9 @@ These are the most refined, tested skills in this collection:
 - **[Remotion Stat Reel Video](./remotion-stat-reel-video/SKILL.md)**  
   Plan, build and validate ~20–25s typographic brag reels in Remotion + GSAP where numbers do the talking: a project collage, counters with a caret-to-highlight box, a giant ghost number, stepped badge counters, an arrow to your work, a typed portfolio URL, a collage burst and a logo end card. A config-driven engine reproduces a measured 60fps reference frame for frame, and every stat must be a verified fact.
 
+- **[HyperFrames Stat Reel Video](./hyperframes-stat-reel-video/SKILL.md)**  
+  The same stat-reel format built with HyperFrames as plain HTML and GSAP, with no React. A bundled generator turns one `reel.json` into the whole project, one seek-safe timeline per beat, and it passes `hyperframes check` with zero findings.
+
 ## Available Skills
 
 - **[Urdish Copywriter](./urdish-copywriter/SKILL.md)**  

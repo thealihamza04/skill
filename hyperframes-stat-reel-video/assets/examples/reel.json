@@ -1,0 +1,55 @@
+{
+  "title": "Ali Hamza stat reel",
+  "scale": 2,
+  "baseDir": "../../../../..",
+  "beats": { "thanks": false },
+  "palette": {
+    "lime": "#ecfaa8",
+    "ink": "#004449",
+    "cream": "#f2ffc3",
+    "ghost": "#d2e59c",
+    "accent": "#dcf36a",
+    "pill": "#eef9b8",
+    "squiggleDark": "#1f5c60",
+    "end": "#fcfcfc",
+    "brand": "#5B50E8"
+  },
+  "_sources": "Every number is verified: 22+ public repos and 4 apps shipped to production from github.com/thealihamza04 and the portfolio; 7 = the projects in public/projects.",
+  "images": [
+    "public/projects/bidzest.png",
+    "public/projects/readnest.png",
+    "public/projects/bigbrainss.png",
+    "public/projects/anoma_eye.png",
+    "public/projects/linkedin_clone.png",
+    "public/projects/tellmeyourneed.png",
+    "public/projects/lahore_board_insight.png",
+    "public/projects/bidzest.png"
+  ],
+  "collageTitle": { "line1": "I've Built", "stat": "22+", "icon": "code", "line2": "repos on", "line3": "GitHub" },
+  "wordsLight": ["Hi", "I'm", "Building"],
+  "wordsDark": ["I", "have", "built"],
+  "cursorCounter": { "from": 0, "to": 22, "suffix": "+", "label": "public repositories" },
+  "ghostCounter": { "count": 4, "word": "Shipped", "then": ["to", "Production"] },
+  "badgeCounter": { "label": "projects built", "steps": [0, 2, 2, 5, 5, 7, 7, 1] },
+  "badgeSentence": { "from": 9, "to": 4, "lead": "Taking", "tail": "products from", "line2": "idea to production" },
+  "arrowSearch": {
+    "checkOut": "Check out",
+    "phrases": [["My", "latest"], ["Case", "studies"], ["from", "here"]],
+    "url": "thealihamza04.vercel.app"
+  },
+  "thanks": { "accent": "Thanks", "rest": " For watching" },
+  "endCard": {
+    "wordmark": { "bold": "thealihamza04", "dot": "", "light": "" },
+    "logoSvg": "<svg width=\"60\" height=\"40\" viewBox=\"-0.2 -0.2 10.93 7.4\" style=\"overflow:visible\" shape-rendering=\"crispEdges\"><g data-dx=\"-6\" data-delay=\"0\" fill=\"#111\"><rect x=\"1\" y=\"0\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"1\" height=\"6\"/><rect x=\"4\" y=\"1\" width=\"1\" height=\"6\"/><rect x=\"1\" y=\"4\" width=\"3\" height=\"1\"/></g><g data-dx=\"6\" data-delay=\"0.06\" fill=\"#111\"><rect x=\"5.53\" y=\"0\" width=\"0.98\" height=\"7\"/><rect x=\"9.55\" y=\"0\" width=\"0.98\" height=\"7\"/><rect x=\"6.51\" y=\"3\" width=\"3.04\" height=\"1\"/></g><polygon data-at=\"0.52\" points=\"3.21,4.75 4.75,4.75 4.75,3.22\" fill=\"#5B50E8\" shape-rendering=\"geometricPrecision\"/></svg>"
+  },
+  "music": { "src": "public/electronic-chill.mp3", "gain": 0.5 },
+  "sfx": [
+    { "src": "public/sfx/swoosh.mp3", "beat": "wordsDark", "at": -0.05, "volume": 0.35 },
+    { "src": "public/sfx/digital-snap.wav", "beat": "cursorCounter", "at": 1.38, "volume": 0.4 },
+    { "src": "public/sfx/highlighter.mp3", "beat": "ghostCounter", "at": 0.85, "volume": 0.25 },
+    { "src": "public/sfx/air.mp3", "beat": "arrowSearch", "at": 0.6, "volume": 0.35 },
+    { "src": "public/sfx/sub-swoosh.wav", "beat": "arrowSearch", "at": 4.35, "volume": 0.45 },
+    { "src": "public/sfx/compute-pulse.wav", "beat": "arrowSearch", "at": 5.65, "volume": 0.3 },
+    { "src": "public/sfx/crystal-chime.wav", "beat": "endCard", "at": 0.05, "volume": 0.4 }
+  ]
+}
