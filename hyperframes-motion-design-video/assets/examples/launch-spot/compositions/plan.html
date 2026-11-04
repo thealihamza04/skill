@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <!-- Scene "plan" (3.156s, scene-local time 0..3.156). Cards assemble, then a log-space push into card 3 = match cut into data.
+         Start, length, transition and sound live in storyboard.json. -->
+    <template>
+      <style>
+        @font-face { font-family: 'Inter'; font-weight: 500; font-style: normal; font-display: block; src: url('../assets/fonts/inter-latin-500-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'Inter'; font-weight: 800; font-style: normal; font-display: block; src: url('../assets/fonts/inter-latin-800-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'Source Serif 4'; font-weight: 400; font-style: normal; font-display: block; src: url('../assets/fonts/source-serif-4-latin-400-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-style: normal; font-display: block; src: url('../assets/fonts/jetbrains-mono-400.woff2') format('woff2'); }
+        #plan { --ground: #0E0E11; --ink: #F3F1EC; --muted: #8C8A92; --accent: #FF5B37; --panel: #17171B; --line: rgba(243,241,236,0.14); --ok: #7BD88F; position: relative; width: 100%; height: 100%; overflow: hidden;
+          background: var(--ground); color: var(--ink); font-family: 'Inter', sans-serif; }
+
+        #plan-cam { position: absolute; inset: 0; }
+        #plan-title { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-weight: 800;
+          font-size: 92px; line-height: 1; letter-spacing: -0.045em; }
+        #plan-row { position: absolute; left: 138px; top: 455.5px; display: flex; gap: 36px; }
+        #plan .card { position: relative; width: 300px; height: 169px; border-radius: 16px; background: var(--panel);
+          border: 1px solid var(--line); overflow: hidden; }
+        #plan .lab { position: absolute; left: 16px; top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 15px;
+          color: var(--muted); }
+        #plan .t1 { position: absolute; left: 20px; top: 40px; width: 200px; font-weight: 800; font-size: 34px; line-height: 1.05; letter-spacing: -0.03em; }
+        #plan .t1 b { color: var(--accent); }
+        #plan .bar { position: absolute; left: 16px; bottom: 22px; height: 10px; border-radius: 5px; background: var(--line); }
+        #plan .bar.c { left: 50%; margin-left: -75px; }
+        #plan .w40 { width: 120px; } #plan .w50 { width: 150px; } #plan .w60 { width: 180px; }
+        #plan .shot { position: absolute; left: 16px; right: 16px; top: 44px; height: 70px; border-radius: 8px;
+          background: linear-gradient(180deg, rgba(243,241,236,0.10), rgba(243,241,236,0.03)); }
+        #plan .zero { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+          font-weight: 800; font-size: 64px; color: var(--accent); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+        #plan .bars { position: absolute; left: 0; right: 0; bottom: 26px; height: 92px; display: flex; gap: 12px;
+          align-items: flex-end; justify-content: center; }
+        #plan .bars i { display: block; width: 30px; border-radius: 6px 6px 2px 2px; background: var(--accent); opacity: 0.85; }
+        #plan .mark { position: absolute; left: 50%; top: 48px; width: 44px; height: 44px; margin-left: -22px;
+          border-radius: 12px; background: var(--ink); }
+
+      </style>
+      <div id="plan" data-composition-id="plan" data-width="1920" data-height="1080" data-duration="3.156">
+
+        <div id="plan-cam" data-layout-allow-overflow>
+          <h1 id="plan-title">Plan every scene first.</h1>
+          <div id="plan-row"><div id="plan-card-0" class="card" data-layout-ignore><div class="bar w60" style="bottom:auto;top:44px;height:16px;background:var(--ink)"></div><div class="bar w40" style="bottom:auto;top:74px;height:16px;background:var(--accent)"></div></div><div id="plan-card-1" class="card" data-layout-ignore><div class="shot"></div><div class="bar w40"></div></div><div id="plan-card-2" class="card" data-layout-ignore><div class="zero">0</div></div><div id="plan-card-3" class="card" data-layout-ignore><div class="bars"><i style="height:44%"></i><i style="height:78%"></i><i style="height:58%"></i></div></div><div id="plan-card-4" class="card" data-layout-ignore><div class="mark"></div><div class="bar w50 c"></div></div></div>
+        </div>
+      </div>
+      <script>
+(() => {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+// Cubic-bezier as a GSAP ease function: ease: bez(0.16, 1, 0.3, 1)
+function bez(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  const sx = (t) => ((ax * t + bx) * t + cx) * t, sy = (t) => ((ay * t + by) * t + cy) * t;
+  return (x) => {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    let lo = 0, hi = 1, t = x;
+    for (let i = 0; i < 40; i++) { if (sx(t) < x) lo = t; else hi = t; t = (lo + hi) / 2; }
+    return sy(t);
+  };
+}
+// Damped spring as a GSAP ease (settles exactly at 1). zeta 0.72-0.85 = premium, tiny overshoot.
+function spring(zeta = 0.78) {
+  const w = 6.4 / Math.min(zeta, 0.999), wd = w * Math.sqrt(Math.max(1e-6, 1 - zeta * zeta));
+  return (t) => {
+    if (t <= 0) return 0;
+    if (t >= 1) return 1;
+    if (zeta >= 1) return 1 - (1 + w * t) * Math.exp(-w * t);
+    return 1 - Math.exp(-zeta * w * t) * (Math.cos(wd * t) + (zeta * w / wd) * Math.sin(wd * t));
+  };
+}
+// Clamped piecewise interpolation with an ease per segment: r(t, [0, 1, 2], [0, 100, 40], "power2.out")
+function r(t, xs, ys, ease = "none") {
+  const e = typeof ease === "function" ? ease : gsap.parseEase(ease);
+  if (t <= xs[0]) return ys[0];
+  for (let i = 0; i < xs.length - 1; i++)
+    if (t <= xs[i + 1]) return ys[i] + (ys[i + 1] - ys[i]) * e((t - xs[i]) / (xs[i + 1] - xs[i]));
+  return ys[ys.length - 1];
+}
+// Driver: fn(localSeconds) recomputes DOM from scratch on every seek inside [start, start + dur].
+// ONE driver per element+property, spanning everything it does (use r() for several phases):
+// two drivers on one property fight, because each sets its own value at build time.
+function drive(start, dur, fn) {
+  const o = { t: 0 };
+  tl.fromTo(o, { t: 0 }, { t: dur, duration: dur, ease: "none", immediateRender: false, onUpdate: () => fn(o.t) }, start);
+  fn(0);
+}
+// Counter that stays legible mid-move. fmt(v) returns the string to show.
+function countUp(sel, from, to, start, dur, ease = "power2.out", fmt = (v) => Math.round(v).toLocaleString("en-US")) {
+  const el = $(sel), e = gsap.parseEase(ease);
+  drive(start, dur, (t) => { el.textContent = fmt(from + (to - from) * e(Math.min(1, t / dur))); });
+}
+// Zoom interpolated in log space (reads as constant camera speed). Never put CSS transform on sel.
+// Several phases on one element: pass arrays, zoomLog(sel, [1, 1.05, 6], [0, 2.2, 3.1], ["none", "power2.in"])
+function zoomLog(sel, from, to, start, dur, ease = "power2.inOut") {
+  const el = $(sel);
+  if (Array.isArray(from)) {  // multi-phase: from = scales, to = times (scene-local s), start = eases
+    const S = from, T = to, E = Array.isArray(start) ? start : T.slice(1).map(() => start || "none");
+    const L = S.map(Math.log), d = T[T.length - 1] - T[0];
+    drive(T[0], d, (t) => {
+      const x = T[0] + t; let i = 0;
+      while (i < T.length - 2 && x > T[i + 1]) i++;
+      const e = gsap.parseEase(E[i]), p = Math.min(1, Math.max(0, (x - T[i]) / (T[i + 1] - T[i])));
+      gsap.set(el, { scale: Math.exp(L[i] + (L[i + 1] - L[i]) * e(p)) });
+    });
+    return;
+  }
+  const e = gsap.parseEase(ease);
+  drive(start, dur, (t) => gsap.set(el, { scale: from * Math.pow(to / from, e(Math.min(1, t / dur))) }));
+}
+// Split an element's text into inline-block word or char spans at build time (deterministic).
+function split(sel, by = "words") {
+  const el = $(sel), text = el.textContent.trim(), out = [];
+  el.textContent = "";
+  const parts = by === "chars" ? Array.from(text) : text.split(/\s+/);
+  parts.forEach((p, i) => {
+    const s = document.createElement("span");
+    s.style.display = "inline-block";
+    s.style.whiteSpace = "pre";
+    s.textContent = p === " " ? " " : p;
+    el.appendChild(s);
+    out.push(s);
+    if (by !== "chars" && i < parts.length - 1) el.appendChild(document.createTextNode(" "));
+  });
+  return out;
+}
+// Seeded PRNG (mulberry32 over a string hash): same "random" layout on every render.
+function rng(seed) {
+  let h = 1779033703 ^ String(seed).length;
+  for (const c of String(seed)) { h = Math.imul(h ^ c.charCodeAt(0), 3432918353); h = (h << 13) | (h >>> 19); }
+  let a = h >>> 0;
+  return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+
+const ID = "plan", D = 3.156;
+
+// Assemble: cards rise 70px on a 0.8 spring, staggered 0.08 (5 x 0.08 = 0.4s, reads as one beat).
+for (let i = 0; i < 5; i++)
+  tl.fromTo("#plan-card-" + i, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: spring(0.8) }, 0.12 + i * 0.08);
+tl.fromTo("#plan-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
+// Camera: slow push on the hold, then x6.4 in log space into card 3 (it fills the frame on the cut).
+// One driver owns the scale for the whole scene (two drivers on one property would fight).
+zoomLog("#plan-cam", [1, 1.035, 6.4], [0, 2.15, D], ["none", "power2.in"]);
+
+
+window.__timelines["plan"] = tl;
+})();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+{
+  "title": "Motion design video \u2014 launch spot",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "palette": {
+    "ground": "#0E0E11",
+    "ink": "#F3F1EC",
+    "muted": "#8C8A92",
+    "accent": "#FF5B37",
+    "panel": "#17171B",
+    "line": "rgba(243,241,236,0.14)",
+    "ok": "#7BD88F"
+  },
+  "fonts": [
+    {
+      "family": "Inter",
+      "weight": 500,
+      "src": "assets/fonts/inter-latin-500-normal.woff2"
+    },
+    {
+      "family": "Inter",
+      "weight": 800,
+      "src": "assets/fonts/inter-latin-800-normal.woff2"
+    },
+    {
+      "family": "Source Serif 4",
+      "weight": 400,
+      "src": "assets/fonts/source-serif-4-latin-400-normal.woff2"
+    },
+    {
+      "family": "JetBrains Mono",
+      "weight": 400,
+      "src": "assets/fonts/jetbrains-mono-400.woff2"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "duration": 2.6,
+      "text": "Describe the video.",
+      "plan": "prompt types itself, submit press; music drop lands on the cut out"
+    },
+    {
+      "id": "plan",
+      "duration": 3.156,
+      "text": "Plan every scene first.",
+      "plan": "storyboard cards assemble, log-space push into card 3 = match cut into data"
+    },
+    {
+      "id": "data",
+      "duration": 2.63,
+      "text": "0",
+      "plan": "the card's 0 is now full frame and counts to 8"
+    },
+    {
+      "id": "motion",
+      "duration": 3.606,
+      "enter": {
+        "type": "push-up",
+        "duration": 0.45,
+        "ease": "power3.inOut"
+      },
+      "text": "Springs.",
+      "palette": {
+        "ground": "#FF5B37",
+        "ink": "#0E0E11"
+      },
+      "plan": "three words, each demonstrates itself; cuts on the beat"
+    },
+    {
+      "id": "check",
+      "duration": 3.156,
+      "text": "Checked by HyperFrames.",
+      "plan": "terminal types the real check command and its real result"
+    },
+    {
+      "id": "end",
+      "duration": 3.606,
+      "enter": {
+        "type": "push-up",
+        "duration": 0.45,
+        "ease": "power3.inOut"
+      },
+      "text": "Motion design, in HTML.",
+      "palette": {
+        "ground": "#F3F1EC",
+        "ink": "#0E0E11",
+        "muted": "#6D6B73",
+        "accent": "#D63F1A"
+      },
+      "plan": "title masked rise, install line, hold"
+    }
+  ],
+  "music": {
+    "src": "assets/music/bed.mp3",
+    "gain": 0.75,
+    "trim": 1.628,
+    "fadeIn": 0.15,
+    "fadeOut": 1.4,
+    "duckDb": -6
+  },
+  "audio": [
+    {
+      "src": "assets/sfx/click.wav",
+      "scene": "hook",
+      "at": 2.15,
+      "peak": 0.2,
+      "volume": 0.35
+    },
+    {
+      "src": "assets/sfx/sub-swoosh.wav",
+      "scene": "data",
+      "at": 0.0,
+      "peak": 0.133,
+      "volume": 0.9,
+      "duck": true
+    },
+    {
+      "src": "assets/sfx/digital-snap.wav",
+      "scene": "motion",
+      "at": 1.502,
+      "volume": 0.62,
+      "duck": true
+    },
+    {
+      "src": "assets/sfx/digital-snap.wav",
+      "scene": "motion",
+      "at": 2.554,
+      "volume": 0.62,
+      "duck": true
+    },
+    {
+      "src": "assets/sfx/click.wav",
+      "scene": "check",
+      "at": 0.9,
+      "peak": 0.2,
+      "volume": 0.3
+    },
+    {
+      "src": "assets/sfx/crystal-chime.wav",
+      "scene": "end",
+      "at": 0.95,
+      "volume": 1.0,
+      "duck": true
+    },
+    {
+      "src": "assets/sfx/digital-snap.wav",
+      "scene": "end",
+      "at": 2.2,
+      "volume": 0.6,
+      "duck": true
+    }
+  ]
+}

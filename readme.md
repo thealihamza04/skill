@@ -24,6 +24,9 @@ These are the most refined, tested skills in this collection:
 - **[HyperFrames Stat Reel Video](./hyperframes-stat-reel-video/SKILL.md)**  
   The same stat-reel format built with HyperFrames as plain HTML and GSAP, with no React. A bundled generator turns one `reel.json` into the whole project, one seek-safe timeline per beat, and it passes `hyperframes check` with zero findings.
 
+- **[HyperFrames Motion Design Video](./hyperframes-motion-design-video/SKILL.md)**  
+  The general-purpose video skill: plan, build and validate any motion-design video in HyperFrames (brand stings, title cards, data reveals, social promos, product demos, launch films, explainers). It follows a storyboard-first plan with real motion numbers, deliberate transitions and measured audio, and an independent critic pass before delivery. A bundled scaffold turns one `storyboard.json` into the project.
+
 ## Available Skills
 
 - **[Urdish Copywriter](./urdish-copywriter/SKILL.md)**  
